@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>💸Bills💸</title>
+    <link rel="stylesheet" href="src/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <h1 class="hello">Bills 💸</h1>
+
+          <div class="row">
+            <div class="col-6">
+              <ul class="moneyAmt">
+                <li>Rent: <input type="number" placeholder="£££" /></li>
+                <li>Utilities: <input type="number" placeholder="£££" /></li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <form>
+                <input type="date" autofocus="on" />
+              </form>
+            </div>
+          </div>
+
+          <div class="row bowder-between">
+            <div class="col-6">
+              <strong> Expenses</strong>
+              <br />
+              <ul class="moneyAmt">
+                <li><input type="text" placeholder="eg. Rent" /></li>
+                <li><input type="text" placeholder="eg. Electricity" /></li>
+                <li><input type="text" placeholder="eg. Wifi" /></li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <strong>Amount</strong>
+              <br />
+              <ul class="moneyAmt">
+                <li><input type="number" placeholder="£££" /></li>
+                <li><input type="number" placeholder="£££" /></li>
+                <li><input type="number" placeholder="£££" /></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card graphs">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-5">
+                  <h3>Trends</h3>
+                  <p>
+                    Your expenses have increased by X% this month
+                    <br />
+                    Main expense: {eg. Rent}
+                  </p>
+                </div>
+                <div class="col-7">
+                  <div>
+                    <canvas id="lineGraph"></canvas>
+                  </div>
+
+                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                  <script>
+                    const ctx = document.getElementById("lineGraph");
+
+                    new Chart(ctx, {
+                      type: "line",
+                      data: {
+                        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+                        datasets: [
+                          {
+                            label: "Expenses per day (£)",
+                            data: [15, 8, 10, 19, 6, 10],
+                            borderWidth: 2,
+                          },
+                        ],
+                      },
+                      options: {
+                        scales: {
+                          y: {
+                            beginAtZero: true,
+                          },
+                        },
+                      },
+                    });
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
